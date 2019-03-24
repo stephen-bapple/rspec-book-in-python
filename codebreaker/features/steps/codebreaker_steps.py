@@ -25,6 +25,4 @@ def step_impl(context):
 @then('I should see "{message}"')
 def step_impl(context, message):
     expect(context.output.messages()).to(contain(message))
-    raise NotImplementedError(f'STEP: Then I should see '
-                              f'{welcome_message}')
 
