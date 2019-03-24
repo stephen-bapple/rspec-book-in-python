@@ -1,4 +1,16 @@
+from expects import expect, contain
+
 from codebreaker import Game
+
+class Output:
+    def __init__(self):
+        self._messages = []
+
+    def messages(self):
+        return self._messages
+
+    def print(self, message):
+        self._messages.append(message)
 
 @given('I am not yet playing')
 def step_impl(context):
@@ -6,5 +18,13 @@ def step_impl(context):
 
 @when('I start a new game')
 def step_impl(context):
-    Game().start()
+    context.output = Output()
+    context.game = Game(context.output)
+    context.game.start()
+
+@then('I should see "{message}"')
+def step_impl(context, message):
+    expect(context.output.messages()).to(contain(message))
+    raise NotImplementedError(f'STEP: Then I should see '
+                              f'{welcome_message}')
 
