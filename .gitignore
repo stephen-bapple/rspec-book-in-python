@@ -1,5 +1,11 @@
-env/
+# Standard python compilation artifacts
 __pycache__/
 *.py[cod]
-*.swp
+
+
+# Packaging artifacts
+build/
+dist/
+.eggs
+*.egg-info
 
