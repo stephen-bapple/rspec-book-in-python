@@ -2,6 +2,7 @@ from expects import expect, contain
 
 from codebreaker import Game
 
+
 class Output:
     def __init__(self):
         self._messages = []
@@ -11,6 +12,7 @@ class Output:
 
     def print(self, message):
         self._messages.append(message)
+
 
 @given('I am not yet playing')
 def step_impl(context):
