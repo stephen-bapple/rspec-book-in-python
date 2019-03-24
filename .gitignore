@@ -9,3 +9,6 @@ dist/
 .eggs
 *.egg-info
 
+# In case I accidentally open a directory in finder
+.DS_Store
+
