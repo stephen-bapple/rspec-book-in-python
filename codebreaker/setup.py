@@ -1,4 +1,16 @@
 from setuptools import find_packages, setup
+from setuptools.command.test import test
+
+
+class Tester(test):
+
+    def run_tests(self):
+        from xmlrunner import XMLTestRunner
+        tests = TestLoader().discover('tests', pattern='test_*.py')
+        runner = XMLTestRunner(output='reports')
+        result = runner.run(tests)
+        exit(0 if result.wasSuccessful() else 1)
+
 
 setup(
     name='codebreaker',
@@ -12,6 +24,5 @@ setup(
         'behave>=1.2.6',  # Needed for features.
         'wheel>=0.33.1',  # Needed to install this package.
     ]
-
 )
 

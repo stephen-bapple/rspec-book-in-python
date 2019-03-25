@@ -9,6 +9,10 @@ dist/
 .eggs
 *.egg-info
 
+# Test results
+reports/
+
+
 # In case I accidentally open a directory in finder
 .DS_Store
 

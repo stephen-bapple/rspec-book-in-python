@@ -1,5 +1,8 @@
 class Game:
     def __init__(self, output):
-        pass
+        self.output = output
+
     def start(self):
-        pass
+        self.output.print('Welcome to Codebreaker!')
+        self.output.print('Enter guess:')
+
