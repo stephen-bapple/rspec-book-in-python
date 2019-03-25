@@ -1,5 +1,7 @@
 from setuptools import find_packages, setup
 from setuptools.command.test import test
+from setuptools_behave import behave_test
+from unittest import TestLoader
 
 
 class Tester(test):
@@ -23,6 +25,10 @@ setup(
         'expects>=0.9.0',  # Needed for unit tests.
         'behave>=1.2.6',  # Needed for features.
         'wheel>=0.33.1',  # Needed to install this package.
-    ]
+    ],
+    cmdclass = {
+        'test': Tester,
+        'behave_test': behave_test
+    }
 )
 
