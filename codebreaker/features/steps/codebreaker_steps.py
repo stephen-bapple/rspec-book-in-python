@@ -10,7 +10,7 @@ class Output:
     def messages(self):
         return self._messages
 
-    def print(self, message):
+    def write(self, message):
         self._messages.append(message)
 
 

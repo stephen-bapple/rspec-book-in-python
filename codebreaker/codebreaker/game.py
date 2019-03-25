@@ -1,8 +1,8 @@
 class Game:
     def __init__(self, output):
-        self.output = output
+        self._output_file = output
 
     def start(self):
-        self.output.print('Welcome to Codebreaker!')
-        self.output.print('Enter guess:')
+        print('Welcome to Codebreaker!', file=self._output_file)
+        print('Enter guess:', file=self._output_file)
 
