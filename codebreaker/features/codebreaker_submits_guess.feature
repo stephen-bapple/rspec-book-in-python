@@ -42,4 +42,3 @@ Feature: code-breaker submits guess
       | 1234 | 1423  | +--- |
       | 1234 | 4321  | ---- |
 
-

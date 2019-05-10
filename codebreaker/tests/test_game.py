@@ -21,11 +21,11 @@ class TestGame(TestCase):
         self.game = Game(self.output)
 
     def test_initialization_sends_a_welcome_message(self):
-        self.game.start()
+        self.game.start('1234')
         expect(self.output.messages()).to(contain('Welcome to Codebreaker!'))
 
     def test_start_prompts_for_first_guess(self):
-        self.game.start()
+        self.game.start('1234')
         expect(self.output.messages()).to(contain('Enter guess:'))
 
 
