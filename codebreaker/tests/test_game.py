@@ -12,7 +12,8 @@ class Output:
         return self._messages
 
     def write(self, message):
-        self._messages.append(message)
+        if message != '\n':
+            self._messages.append(message)
 
 
 class TestGame(TestCase):
@@ -28,6 +29,30 @@ class TestGame(TestCase):
         self.game.start('1234')
         expect(self.output.messages()).to(contain('Enter guess:'))
 
+    def test_guess_with_no_matches(self):
+        self.game.start('1234')
+        self.game.guess('5555')
+        expect(self.output.messages()).to(contain(''))
+
+    def test_guess_with_1_number_match(self):
+        self.game.start('1234')
+        self.game.guess('2555')
+        expect(self.output.messages()).to(contain('-'))
+
+    def test_guess_with_1_exact_match(self):
+        self.game.start('1234')
+        self.game.guess('1555')
+        expect(self.output.messages()).to(contain('+'))
+
+    def test_guess_with_2_number_matches(self):
+        self.game.start('1234')
+        self.game.guess('2355')
+        expect(self.output.messages()).to(contain('--'))
+
+    def test_guess_with_1_number_match_and_1_exact_match_in_that_order(self):
+        self.game.start('1234')
+        self.game.guess('2535')
+        expect(self.output.messages()).to(contain('+-'))
 
 if __name__ == "__main__":
     main()
