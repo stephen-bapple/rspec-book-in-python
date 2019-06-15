@@ -21,4 +21,5 @@ tags/releases with the name of the chapter.
 These chapters go over the problems with traditional software projects, 
 how Agile methodologies address them, how BDD fits in with Agile, and how
 tools like Cucumber and RSpec help to achieve the goals laid out in Agile/BDD.
-Although very important and enlightening, there are no direct artifacts for these chapters.
+Although very important and enlightening, there are no direct artifacts for these chapters. 
+Therefore there are no releases or code additions/changes.
