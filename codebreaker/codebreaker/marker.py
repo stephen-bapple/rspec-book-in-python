@@ -9,20 +9,24 @@ class Marker:
         return reduce(
             lambda matches, index:
                 matches + (1 if self.exact_match(index) else 0),
-           range(0, 4), 0)
+            range(0, 4), 0)
 
     def number_match_count(self):
         return self.total_match_count() - self.exact_match_count()
 
     def total_match_count(self):
-        count = 0
         secret = list(self.secret)
+        return reduce(
+            lambda matches, index:
+                matches + (1
+                           if self.delete_first(secret, self.guess[index])
+                           else 0),
+            range(0, 4), 0)
 
-        for number in self.guess:
-            if number in secret:
-                secret.remove(number)
-                count += 1
-        return count
+    def delete_first(self, secret, number):
+        if number in secret:
+            secret.remove(number)
+            return True
 
     def exact_match(self, index):
         return self.guess[index] == self.secret[index]
