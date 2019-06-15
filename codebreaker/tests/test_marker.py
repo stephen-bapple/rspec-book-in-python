@@ -39,6 +39,10 @@ class TestMarkerNumberMatchCount(TestCase):
         marker = Marker('1234', '1525')
         expect(marker.number_match_count()).to(equal(1))
 
+    def test_number_match_count_with_1_exact_match_duplicated_in_guess(self):
+        marker = Marker('1234', '1155')
+        expect(marker.number_match_count()).to(equal(0))
+
 
 if __name__ == "__main__":
     main()

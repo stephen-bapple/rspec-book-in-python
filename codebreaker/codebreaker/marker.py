@@ -12,10 +12,17 @@ class Marker:
            range(0, 4), 0)
 
     def number_match_count(self):
-        return reduce(
-            lambda matches, index:
-                matches + (1 if self.number_match(index) else 0),
-            range(0, 4), 0)
+        return self.total_match_count() - self.exact_match_count()
+
+    def total_match_count(self):
+        count = 0
+        secret = list(self.secret)
+
+        for number in self.guess:
+            if number in secret:
+                secret.remove(number)
+                count += 1
+        return count
 
     def exact_match(self, index):
         return self.guess[index] == self.secret[index]
