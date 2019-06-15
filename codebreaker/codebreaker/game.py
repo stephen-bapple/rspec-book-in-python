@@ -9,15 +9,25 @@ class Game:
         self.print('Enter guess:')
 
     def guess(self, guess):
-        mark = ''
+        self.print('+'*self.exact_match_count(guess)
+                   + '-'*self.number_match_count(guess))
+
+    def exact_match_count(self, guess):
+        exact_match_count = 0
+
         for index in range(len(guess)):
             if self.exact_match(guess, index):
-                mark += '+'
+                exact_match_count += 1
+        return exact_match_count
+
+    def number_match_count(self, guess):
+        number_match_count = 0
+
         for index in range(len(guess)):
             if self.number_match(guess, index):
-                mark += '-'
+                number_match_count += 1
 
-        self.print(mark)
+        return number_match_count
 
     def exact_match(self, guess, index):
         return guess[index] == self.secret[index]
