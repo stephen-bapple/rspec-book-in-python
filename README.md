@@ -3,8 +3,7 @@ The RSpec Book only with all exercises completed in Python/Unittest/Behave
 instead of Ruby/RSpec/Cucumber.
 
 These substitutions are done for the following reasons, in order of importance:
-- The book claims to be full of lessons that are language agnostic.
-..- What better way to drive them home than using a different language?
+- The book claims to be full of lessons that are language agnostic. What better way to drive them home than using a different language?
 - The book is fairly old and there isn't a lot of value in learning old versions of a language and its tools.
 
 
