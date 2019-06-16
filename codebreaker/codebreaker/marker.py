@@ -1,3 +1,4 @@
+from collections import Counter
 from functools import reduce
 
 
@@ -15,22 +16,10 @@ class Marker:
         return self.total_match_count() - self.exact_match_count()
 
     def total_match_count(self):
-        secret = list(self.secret)
-        return reduce(
-            lambda matches, index:
-                matches + (1
-                           if self.delete_first(secret, self.guess[index])
-                           else 0),
-            range(0, 4), 0)
-
-    def delete_first(self, secret, number):
-        if number in secret:
-            secret.remove(number)
-            return True
+        return len(
+            list((Counter(self.guess) & Counter(self.secret)).elements())
+        )
 
     def exact_match(self, index):
         return self.guess[index] == self.secret[index]
-
-    def number_match(self, index):
-        return self.guess[index] in self.secret and not self.exact_match(index)
 
